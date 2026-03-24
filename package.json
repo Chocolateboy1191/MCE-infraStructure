@@ -1,7 +1,8 @@
 {
   "name": "mce-app",
   "version": "1.0.0",
-  "type": "module",
+  "description": "MCE Engine",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
