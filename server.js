@@ -1,6 +1,6 @@
-import express from "express";
-import dotenv from "dotenv";
-import { runMCE } from "./modules/engine.js";
+const express = require("express");
+const dotenv = require("dotenv");
+const { runMCE } = require("./modules/engine.js");
 
 dotenv.config();
 
@@ -13,19 +13,10 @@ app.get("/", (req, res) => {
 
 app.post("/mce", async (req, res) => {
   try {
-    const { input } = req.body;
-
-    if (!input) {
-      return res.status(400).json({ error: "Missing input" });
-    }
-
-    const result = await runMCE(input);
-
+    const result = await runMCE(req.body.input);
     res.json(result);
   } catch (err) {
-    res.status(500).json({
-      error: err.message
-    });
+    res.status(500).json({ error: err.message });
   }
 });
 
